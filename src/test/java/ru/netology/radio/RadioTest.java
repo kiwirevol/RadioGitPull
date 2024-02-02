@@ -1,5 +1,7 @@
 package ru.netology.radio;
 
+
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,11 +11,32 @@ public class RadioTest {
     //Номер текущей радиостанции
 
     @Test
+    public void shouldCalcMaxRadioStation() {
+        Radio rad = new Radio(10);
+        rad.setToMaxRadioStation();
+
+        int expected = 9;
+        int actual = rad.getMaxRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetRadioStation() {
         radio.setCurrentRadioStation(5);
 
         int expected = 5;
         int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetToMaxRadioStation() {
+        radio.setToMaxRadioStation();
+
+        int expected = 9;
+        int actual = radio.getMaxRadioStation();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -39,21 +62,11 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetToMaxRadioStation() {
-        radio.setToMaxRadioStation();
-
-        int expected = 9;
-        int actual = radio.getCurrentRadioStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
     public void shouldSetToMinRadioStation() {
         radio.setToMinRadioStation();
 
         int expected = 0;
-        int actual = radio.getCurrentRadioStation();
+        int actual = radio.getMinRadioStation();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -139,7 +152,7 @@ public class RadioTest {
         radio.setToMaxVolume();
 
         int expected = 100;
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getMaxVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -149,7 +162,7 @@ public class RadioTest {
         radio.setToMinVolume();
 
         int expected = 0;
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getMinVolume();
 
         Assertions.assertEquals(expected, actual);
     }
